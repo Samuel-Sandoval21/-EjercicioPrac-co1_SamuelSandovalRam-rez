@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title th:text="${categoria.id != null} ? 'Editar Categoría' : 'Nueva Categoría'">Formulario Categoría</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1 th:text="${categoria.id != null} ? 'Editar Categoría' : 'Nueva Categoría'" class="mb-4 text-primary"></h1>
+        
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form th:action="@{/categorias/guardar}" th:object="${categoria}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre *</label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" 
+                                       placeholder="Ingrese el nombre de la categoría" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" th:field="*{descripcion}" 
+                                  rows="4" placeholder="Ingrese una descripción para la categoría"></textarea>
+                    </div>
+                    
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                        <a th:href="@{/categorias}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

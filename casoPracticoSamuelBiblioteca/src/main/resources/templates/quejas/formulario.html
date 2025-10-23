@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Quejas y Sugerencias</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="text-center mb-0">Quejas y Sugerencias</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center text-muted mb-4">
+                            Su opinión es importante para nosotros. Por favor, complete el siguiente formulario 
+                            y nos pondremos en contacto con usted a la brevedad.
+                        </p>
+                        
+                        <form th:action="@{/quejas/enviar}" th:object="${queja}" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nombreCliente" class="form-label">Nombre Completo</label>
+                                        <input type="text" class="form-control" id="nombreCliente" th:field="*{nombreCliente}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="tipo" class="form-label">Tipo de Mensaje</label>
+                                        <select class="form-select" id="tipo" th:field="*{tipo}">
+                                            <option th:each="tipo : ${T(com.biblioteca.domain.Queja$TipoQueja).values()}" 
+                                                    th:value="${tipo}"
+                                                    th:text="${tipo.name()}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email" th:field="*{email}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefono" th:field="*{telefono}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="asunto" class="form-label">Asunto</label>
+                                <input type="text" class="form-control" id="asunto" th:field="*{asunto}">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">Mensaje *</label>
+                                <textarea class="form-control" id="mensaje" th:field="*{mensaje}" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

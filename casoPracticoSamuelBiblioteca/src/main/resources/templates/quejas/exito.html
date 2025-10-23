@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Mensaje Enviado</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="text-center">
+            <div class="card shadow-sm border-0">
+                <div class="card-body py-5">
+                    <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
+                    <h2 class="text-success">¡Mensaje Enviado Exitosamente!</h2>
+                    <p class="lead mb-4">Hemos recibido su mensaje y nos pondremos en contacto con usted pronto.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a th:href="@{/}" class="btn btn-primary">
+                            <i class="fas fa-home"></i> Volver al Inicio
+                        </a>
+                        <a th:href="@{/quejas/formulario}" class="btn btn-outline-primary">
+                            <i class="fas fa-envelope"></i> Enviar Otro Mensaje
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

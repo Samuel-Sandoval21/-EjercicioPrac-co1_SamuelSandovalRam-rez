@@ -4,10 +4,10 @@
  */
 package com.Biblioteca.Biblioteca.repository;
 
-/**
- *
- * @author HP
- */
-public interface CategoriaRepository {
-    
+import com.Biblioteca.Biblioteca.domain.Categoria;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 }

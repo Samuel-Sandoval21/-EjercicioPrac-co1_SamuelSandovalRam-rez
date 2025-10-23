@@ -4,10 +4,26 @@
  */
 package com.Biblioteca.Biblioteca.service.impl;
 
-/**
- *
- * @author HP
- */
-public class QuejaServiceImpl {
+import com.Biblioteca.Biblioteca.domain.Queja;
+import com.Biblioteca.Biblioteca.repository.QuejaRepository;
+import com.Biblioteca.Biblioteca.service.QuejaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class QuejaServiceImpl implements QuejaService {
     
+    @Autowired
+    private QuejaRepository quejaRepositorio;
+    
+    @Override
+    public List<Queja> obtenerTodas() {
+        return quejaRepositorio.findAll();
+    }
+    
+    @Override
+    public Queja guardar(Queja queja) {
+        return quejaRepositorio.save(queja);
+    }
 }

@@ -4,10 +4,13 @@
  */
 package com.Biblioteca.Biblioteca.service;
 
-/**
- *
- * @author HP
- */
+import com.Biblioteca.Biblioteca.domain.Categoria;
+import java.util.List;
+import java.util.Optional;
+
 public interface CategoriaService {
-    
+    List<Categoria> obtenerTodas();
+    Optional<Categoria> obtenerPorId(Long id);
+    Categoria guardar(Categoria categoria);
+    void eliminar(Long id);
 }

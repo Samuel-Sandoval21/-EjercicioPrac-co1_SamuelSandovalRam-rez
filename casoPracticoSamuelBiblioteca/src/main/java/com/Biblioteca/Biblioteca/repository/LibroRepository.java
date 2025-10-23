@@ -4,10 +4,13 @@
  */
 package com.Biblioteca.Biblioteca.repository;
 
-/**
- *
- * @author HP
- */
-public interface LibroRepository {
-    
+import com.Biblioteca.Biblioteca.domain.Libro;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+@Repository
+public interface LibroRepository extends JpaRepository<Libro, Long> {
+    List<Libro> findByDisponibleTrue();
+    List<Libro> findByTituloContainingIgnoreCase(String titulo);
 }
